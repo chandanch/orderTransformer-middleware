@@ -1,0 +1,4 @@
+module.exports.testQuery = function() {
+    const query = '| inputlookup kv_summarydata| eval summarydateformat=round(strptime(summarydate,"%m/%d/%y"),0)| where (summarydateformat>="1491157800"  and summarydateformat<"1513621800") | where machinename="rom"  |eval "Shift 6AM-6AM"=round(sixtosix,2) |eval "Shift 12AM-12AM"=round(twelvetotwelve,2)|eval "Shift A"=round(shifta,2)  |eval "Shift B"=round(shiftb,2)  |eval "Shift C"=round(shiftc,2)  |  rename "Shift 6AM-6AM" as "ROM" | rex field=summarydate "(?<month>..)/(?<field2>.*)" |rex field=field2 "(?<date>..)/(?<year>.*)" |chart sum("ROM") as "ROM" by month| eval month = case(month="12", "Dec",month="11","Nov",month="10","Oct",month="09","Sept",month="08", "Aug",month="07","Jly",month="06","Jun",month="05","May",month="04", "Apr",month="03","Mar",month="02","Feb",month="01","Jan")';
+    return query;
+}

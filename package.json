@@ -1,0 +1,27 @@
+{
+  "name": "ordertransformer-middleware",
+  "version": "0.1.0",
+  "description": "Order Tranformer middleware to push order to eshop",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "./node_modules/.bin/jasmine-node ./specs/server.spec.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ]
+  },
+  "author": "chandanch",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jasmine-node": "^1.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
